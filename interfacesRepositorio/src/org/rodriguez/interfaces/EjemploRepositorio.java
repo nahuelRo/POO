@@ -2,13 +2,14 @@ package org.rodriguez.interfaces;
 
 import org.rodriguez.interfaces.modelo.Cliente;
 import org.rodriguez.interfaces.repositorio.*;
+import org.rodriguez.interfaces.repositorio.lista.ClienteListRepositorio;
 
 import java.util.List;
 
 public class EjemploRepositorio {
     public static void main(String[] args) {
 
-        ClienteListRepositorio repo = new ClienteListRepositorio();
+        AbstractListRepositorio<Cliente> repo = new ClienteListRepositorio();
 
         repo.crear(new Cliente("Jano", "Perez"));
         repo.crear(new Cliente("Bea", "Gonzales"));
@@ -20,17 +21,17 @@ public class EjemploRepositorio {
 
         System.out.println("===== Paginable =====");
 
-        List<Cliente> paginable = ((PaginableRepositorio)repo).listar(1, 3);
+        List<Cliente> paginable = repo.listar(1, 3);
         paginable.forEach(System.out::println);
 
         System.out.println("===== Ordenar ASC =====");
 
-        List<Cliente> clientesOrdenAsc = ((OrdenableRepositorio)repo).listar("nombre", Direccion.ASC);
+        List<Cliente> clientesOrdenAsc = repo.listar("nombre", Direccion.ASC);
         clientesOrdenAsc.forEach(System.out::println);
 
         System.out.println("===== Ordenar DESC =====");
 
-        List<Cliente> clientesOrdenDesc = ((OrdenableRepositorio)repo).listar("nombre", Direccion.DESC);
+        List<Cliente> clientesOrdenDesc = repo.listar("nombre", Direccion.DESC);
         clientesOrdenDesc.forEach(System.out::println);
 
         System.out.println("===== Editar =====");

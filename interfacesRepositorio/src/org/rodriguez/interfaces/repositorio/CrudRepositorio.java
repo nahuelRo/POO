@@ -1,16 +1,15 @@
 package org.rodriguez.interfaces.repositorio;
 
-import org.rodriguez.interfaces.modelo.Cliente;
 import java.util.List;
 
-public interface CrudRepositorio {
-    List<Cliente> listar();
+public interface CrudRepositorio<T> {
+    List<T> listar();
 
-    Cliente porId(Integer id);
+    T porId(Integer id);
 
-    void crear(Cliente cliente);
+    void crear(T t);
 
-    void editar(Cliente cliente);
+    void editar(T t);
 
     void eliminar(Integer id);
 }
