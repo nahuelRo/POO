@@ -4,13 +4,15 @@ import org.rodriguez.interfaces.modelo.Cliente;
 import org.rodriguez.interfaces.modelo.Producto;
 import org.rodriguez.interfaces.repositorio.AbstractListRepositorio;
 import org.rodriguez.interfaces.repositorio.Direccion;
+import org.rodriguez.interfaces.repositorio.excepciones.AccesoDatoException;
+import org.rodriguez.interfaces.repositorio.excepciones.LecturaAccesoDatoException;
 import org.rodriguez.interfaces.repositorio.lista.ProductoListRepositorio;
 
 import java.util.List;
 
 public class EjemploRepositorioProducto {
     public static void main(String[] args) {
-
+        try {
         AbstractListRepositorio<Producto> repo = new ProductoListRepositorio();
 
         repo.crear(new Producto("mesa", 50.52));
@@ -51,5 +53,12 @@ public class EjemploRepositorioProducto {
 
         System.out.println("===== Total =====");
         System.out.println("Total registros: " + repo.total());
+        } catch (LecturaAccesoDatoException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } catch (AccesoDatoException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

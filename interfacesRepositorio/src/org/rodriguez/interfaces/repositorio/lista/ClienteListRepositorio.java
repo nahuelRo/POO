@@ -3,6 +3,7 @@ package org.rodriguez.interfaces.repositorio.lista;
 import org.rodriguez.interfaces.modelo.Cliente;
 import org.rodriguez.interfaces.repositorio.AbstractListRepositorio;
 import org.rodriguez.interfaces.repositorio.Direccion;
+import org.rodriguez.interfaces.repositorio.excepciones.LecturaAccesoDatoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class ClienteListRepositorio extends AbstractListRepositorio<Cliente> {
 
     @Override
-    public void editar(Cliente cliente) {
+    public void editar(Cliente cliente) throws LecturaAccesoDatoException {
         Cliente c = this.porId(cliente.getId());
         c.setNombre(cliente.getNombre());
         c.setApellido(cliente.getApellido());

@@ -4,6 +4,7 @@ import org.rodriguez.interfaces.modelo.Cliente;
 import org.rodriguez.interfaces.modelo.Producto;
 import org.rodriguez.interfaces.repositorio.AbstractListRepositorio;
 import org.rodriguez.interfaces.repositorio.Direccion;
+import org.rodriguez.interfaces.repositorio.excepciones.LecturaAccesoDatoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 public class ProductoListRepositorio extends AbstractListRepositorio<Producto> {
 
     @Override
-    public void editar(Producto producto) {
+    public void editar(Producto producto) throws LecturaAccesoDatoException {
         Producto p = porId(producto.getId());
 
         p.setDescripcion(producto.getDescripcion());
